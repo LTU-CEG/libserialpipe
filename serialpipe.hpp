@@ -250,9 +250,9 @@ public:
     _tx_buffer.reserve(1024);
     _rx_buffer.reserve(1024);
 
-    _rx_thread = std::thread(&SerialBridge::readSerialWorker, this);
-    _tx_thread = std::thread(&SerialBridge::writeSerialWorker, this);
-    _cb_thread = std::thread(&SerialBridge::callbackWorker, this);
+    _rx_thread = std::thread(&bridge::readSerialWorker, this);
+    _tx_thread = std::thread(&bridge::writeSerialWorker, this);
+    _cb_thread = std::thread(&bridge::callbackWorker, this);
   }
 
   /**
@@ -395,6 +395,5 @@ public:
   }
 };
 
-}  // namespace SerialPipe
+}  // namespace serialpipe
 
-#endif
